@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zerogravity_HomeSlider>
+            <version>0.0.1</version>
+        </Zerogravity_HomeSlider>
+    </modules>
+    <global>
+        <models>
+            <homeslider>
+                <class>Zerogravity_HomeSlider_Model</class>
+                <resourceModel>homeslider_resource</resourceModel>
+            </homeslider>
+            <homeslider_resource>
+                <class>Zerogravity_HomeSlider_Model_Resource</class>
+                <entities>
+                    <slider>
+                        <table>home_slider</table>
+                    </slider>
+                </entities>
+            </homeslider_resource>
+        </models>
+        <resources>
+            <slider_setup>
+                <setup>
+                    <module>Zerogravity_HomeSlider</module>
+                    <class>Zerogravity_HomeSlider_Model_Resource_Setup</class>
+                </setup>
+                <!--<connection>-->
+                <!--<use>core_setup</use>-->
+                <!--</connection>-->
+            </slider_setup>
+            <!--<slider_write>-->
+            <!--<connection>-->
+            <!--<use>core_write</use>-->
+            <!--</connection>-->
+            <!--</slider_write>-->
+            <!--<slider_read>-->
+            <!--<connection>-->
+            <!--<use>core_read</use>-->
+            <!--</connection>-->
+            <!--</slider_read>-->
+        </resources>
+        <blocks>
+            <homeslider>
+                <class>Zerogravity_HomeSlider_Block</class>
+            </homeslider>
+        </blocks>
+        <helpers>
+            <homeslider>
+                <class>Zerogravity_HomeSlider_Helper</class>
+            </homeslider>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <homeslider>
+                <use>standard</use>
+                <args>
+                    <module>Zerogravity_HomeSlider</module>
+                    <frontName>homeslider</frontName>
+                </args>
+            </homeslider>
+        </routers>
+        <layout>
+            <updates>
+                <homeslider>
+                    <file>homeslider.xml</file>
+                </homeslider>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <zerogravity_homeslider before="Mage_Adminhtml">Zerogravity_HomeSlider_Adminhtml</zerogravity_homeslider>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <cms translate="title" module="cms">
+                            <children>
+                                <zerogravity_homeslider module="homeslider">
+                                    <title>Home Slider</title>
+                                    <sort_order>40</sort_order>
+                                </zerogravity_homeslider>
+                            </children>
+                        </cms>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <menu>
+            <cms translate="title" module="cms">
+                <children>
+                    <zerogravity_homeslider translate="title" module="homeslider">
+                        <title>Home Slider</title>
+                        <action>adminhtml/homeslider</action>
+                        <sort_order>40</sort_order>
+                    </zerogravity_homeslider>
+                </children>
+            </cms>
+        </menu>
+    </adminhtml>
+</config>

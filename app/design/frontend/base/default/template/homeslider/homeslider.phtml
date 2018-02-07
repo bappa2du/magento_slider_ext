@@ -1,0 +1,56 @@
+
+<?php
+$sliders = $this->getSlider()->getData();
+?>
+
+<div id="full-slider-top" class="owl-carousel owl-theme" style="min-height: 420px;">
+    <?php foreach ($sliders as $key => $s) { ?>
+        <div class="item">
+            <a href="<?= Mage::getBaseUrl() . $s['url_link'] ?>" target="<?= $s['url_target'] ?>" title="<?= $s['title'] ?>">
+                <img class="owl-lazy" style="width: 100%"
+                     data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . DS . 'home_Slider_images' . DS . $s['image_file'] ?>"
+                     alt="">
+            </a>
+        </div>
+    <?php } ?>
+</div>
+
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $('#full-slider-top').owlCarousel({
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                dots: true,
+                loop: true,
+                lazyLoad:true,
+                animateOut: 'fadeOut',
+                nav: true,
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    480: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 1,
+                        nav: true
+                    },
+                    1000: {
+                        items: 1,
+                        nav: true,
+                        loop: true
+                    }
+                }
+
+            })
+        });
+    })(jQuery);
+
+</script>
